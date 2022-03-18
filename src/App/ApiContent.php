@@ -19,7 +19,6 @@ class ApiContent
         // 'code'           => xxx, // Api响应状态码
         // 'message'        => xxx, // Api响应文本消息
         // 'trace_id'       => xxx, // Api链路追踪ID
-        // 'status'         => xxx, // Api枚举类型
         // 'data'           => xxx, // 数据信息
         // 'debug_info'     => xxx, // 调试信息
     ];
@@ -30,7 +29,6 @@ class ApiContent
     const CODE              = 'code';
     const MESSAGE           = 'message';
     const TRACE_ID          = 'trace_id';
-    const STATUS            = 'status';
     const DEBUG_INFO        = 'debug_info';
 
     /**
@@ -70,7 +68,7 @@ class ApiContent
      */
     private function setEventTrigger(string $eventType, int $code = null, Request $request, Exception|Throwable $e = null)
     {
-        if($this->getApiReturnBool(self::CODE) && $eventType == 'success') {
+        if($eventType == 'success' && $this->getApiReturnBool(self::CODE)) {
             $this->setCode($code);
         } else if($this->getApiReturnBool(self::CODE) && $eventType == 'exception') {
             $this->setExceptionCode($e);
@@ -80,15 +78,11 @@ class ApiContent
             $this->setMessage();
         }
 
-        if($this->getApiReturnBool(self::STATUS)) {
-            $this->setStatus();
-        }
-
         if($this->getApiReturnBool(self::TRACE_ID)) {
             $this->setTraceId($request);
         }
 
-        if($this->getApiReturnBool(self::DEBUG_INFO) && $this->getLaravelDebug()) {
+        if($eventType == 'exception' && $this->getApiReturnBool(self::DEBUG_INFO) && $this->getLaravelDebug()) {
             $this->setDebugInfo($e);
         }
     }
@@ -121,12 +115,7 @@ class ApiContent
 
     private function setMessage()
     {
-        $this->responseContent['message'] = '';
-    }
-
-    private function setStatus()
-    {
-        $this->responseContent['status'] = '';
+        $this->responseContent['message'] = ApiCode::getApiMessage($this->responseContent['code']);
     }
 
     private function setTraceId(Request $request)

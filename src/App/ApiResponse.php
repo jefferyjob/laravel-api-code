@@ -20,9 +20,9 @@ class ApiResponse
      * @param array $data
      * @throws HttpException
      */
-    public function success(string|int $message = null, int $code = 100, array $data = [])
+    public function success(string|int $message = null, int $code = 0, array $data = [])
     {
-        throw new HttpException($message, ApiEnum::SUCCESS->value);
+        throw new HttpException($message, $code);
     }
 
     /**
