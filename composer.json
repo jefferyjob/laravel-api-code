@@ -1,0 +1,26 @@
+{
+    "name": "jefferyjob/laravel-lib-api",
+    "description": "The simplest way for laravel to develop API",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jefferyjob\\LaravelLibApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jeffery",
+            "email": "jeffery@mailjob.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "laravel/framework": "10.x-dev"
+    }
+}
