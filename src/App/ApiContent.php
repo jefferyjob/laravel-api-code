@@ -54,7 +54,7 @@ class ApiContent
      */
     public function getExceptionContent(Request $request, Exception|Throwable $e): array
     {
-        $this->setEventTrigger(eventType:'exception', request: $request);
+        $this->setEventTrigger(eventType:'exception', code: 500, request: $request, e: $e);
         return $this->responseContent;
     }
 
@@ -66,7 +66,7 @@ class ApiContent
      * @param Request $request
      * @param Exception|Throwable|null $e
      */
-    private function setEventTrigger(string $eventType, int $code = null, Request $request, Exception|Throwable $e = null)
+    private function setEventTrigger(string $eventType, int $code, Request $request, Exception|Throwable $e = null)
     {
         if($eventType == 'success' && $this->getApiReturnBool(self::CODE)) {
             $this->setCode($code);
