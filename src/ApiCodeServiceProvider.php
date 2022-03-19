@@ -2,8 +2,7 @@
 namespace Jefferyjob\LaravelLibApi;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Jefferyjob\LaravelLibApi\App\ApiResponse;
-use Jefferyjob\LaravelLibApi\Exceptions\RuntimeException;
+use Jefferyjob\LaravelLibApi\App\ApiCode;
 
 /**
  * --------------------------------------------------------------------------
@@ -11,7 +10,7 @@ use Jefferyjob\LaravelLibApi\Exceptions\RuntimeException;
  * 为 laravel 提供配置
  * --------------------------------------------------------------------------
  */
-class LibApiServiceProvider extends LaravelServiceProvider
+class ApiCodeServiceProvider extends LaravelServiceProvider
 {
     /**
      * 标记着提供器是延迟加载的
@@ -25,13 +24,16 @@ class LibApiServiceProvider extends LaravelServiceProvider
      */
     public function boot()
     {
-        // 发布配置文件
-        $config_path1 = realpath(__DIR__.'/Publish/lib_api.php');
-        $config_path2 = realpath(__DIR__.'/Publish/api_code.php');
+        $config_lib_api = realpath(__DIR__ . '/Publish/api_code_conf.php');
+        $config_api_code = realpath(__DIR__.'/Publish/api_code.php');
+        // $middleware_api = realpath(__DIR__.'/Publish/Api.php');
         $this->publishes([
-            $config_path1 => config_path('lib_api.php'),
-            $config_path2 => config_path('api_code.php'),
+            $config_lib_api => config_path('api_code_conf.php'),
+            $config_api_code => config_path('api_code.php'),
+            // $middleware_api => app_path('Http/Middleware/Api.php'),
         ]);
+
+
     }
 
     /**
@@ -40,9 +42,9 @@ class LibApiServiceProvider extends LaravelServiceProvider
     public function register()
     {
         // 服务注册
-        $this->app->singleton(ApiResponse::class, ApiResponse::class);
+        $this->app->singleton(ApiCode::class, ApiCode::class);
         // 给服务一个别名
-        $this->app->alias(ApiResponse::class, 'ApiResponse');
+        $this->app->alias(ApiCode::class, 'ApiCode');
     }
 
     /**
@@ -52,7 +54,7 @@ class LibApiServiceProvider extends LaravelServiceProvider
      */
     public function provides()
     {
-        return [ApiResponse::class, 'ApiResponse'];
+        return [ApiCode::class, 'ApiCode'];
     }
 
 }

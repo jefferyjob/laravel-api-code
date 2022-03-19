@@ -5,7 +5,7 @@
 **composer 安装**
 
 ```bash
-composer require jefferyjob/laravel-lib-api
+composer require jefferyjob/laravel-api-code
 ```
 
 **添加服务**
@@ -13,13 +13,13 @@ composer require jefferyjob/laravel-lib-api
 在 laravel framework 配置目录 conf 目录的 app.php 文件种，容器配置 providers 种配置IOC
 
 ```php
-Jefferyjob\LaravelLibApi\Providers\LibApiPublishProvider::class
+Jefferyjob\LaravelApiCode\Providers\LibApiPublishProvider::class
 ```
 
 **发布配置**
 
 ```bash
-php artisan vendor:publish --provider="Jefferyjob\LaravelLibApi\LibApiServiceProvider"
+php artisan vendor:publish --provider="Jefferyjob\LaravelLibApi\ApiCodeServiceProvider"
 ```
 
 ## API数据优化
@@ -28,7 +28,6 @@ php artisan vendor:publish --provider="Jefferyjob\LaravelLibApi\LibApiServicePro
 
 ```php
 /**
- * Render an exception into an HTTP response.
  * 将异常渲染至 HTTP 响应值中
  *
  * @param  \Illuminate\Http\Request  $request
@@ -47,4 +46,14 @@ public function render($request, Throwable $e)
 }
 ```
 
-在 `app/Http/Middleware/Api.php` 
+在 `app/Http/Kernel.php` 中配置数据返回的中间件
+
+```php
+protected $middlewareGroups = [
+    'api' => [
+        // ... ...
+        \Jefferyjob\LaravelApiCode\App\Middleware\Api::class,
+        // ... ...
+    ],
+];
+```

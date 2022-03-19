@@ -1,11 +1,11 @@
 {
-    "name": "jefferyjob/laravel-lib-api",
+    "name": "jefferyjob/laravel-api-code",
     "description": "The simplest way for laravel to develop API",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Jefferyjob\\LaravelLibApi\\": "src/"
+            "Jefferyjob\\LaravelApiCode\\": "src/"
         }
     },
     "authors": [
