@@ -1,5 +1,5 @@
 <?php
-namespace Jefferyjob\LaravelLibApi\Exceptions;
+namespace Jefferyjob\LaravelApiCode\Exceptions;
 
 /**
  * 逻辑异常处理

@@ -1,11 +1,11 @@
 <?php
-namespace Jefferyjob\LaravelLibApi\App\Middleware;
+namespace Jefferyjob\LaravelApiCode\App\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Jefferyjob\LaravelLibApi\App\ApiCode;
-use Jefferyjob\LaravelLibApi\App\Config;
+use Jefferyjob\LaravelApiCode\App\ApiCode;
+use Jefferyjob\LaravelApiCode\App\Config;
 
 class Api
 {

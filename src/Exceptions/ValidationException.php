@@ -1,5 +1,5 @@
 <?php
-namespace Jefferyjob\LaravelLibApi\Exceptions;
+namespace Jefferyjob\LaravelApiCode\Exceptions;
 
 /**
  * 数据验证异常处理

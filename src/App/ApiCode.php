@@ -1,8 +1,8 @@
 <?php
-namespace Jefferyjob\LaravelLibApi\App;
+namespace Jefferyjob\LaravelApiCode\App;
 
 use Illuminate\Http\Request;
-use Jefferyjob\LaravelLibApi\Exceptions\Exception;
+use Jefferyjob\LaravelApiCode\Exceptions\Exception;
 use Throwable;
 
 /**

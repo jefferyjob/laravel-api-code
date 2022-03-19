@@ -1,6 +1,6 @@
 <?php
 
-namespace Jefferyjob\LaravelLibApi\App;
+namespace Jefferyjob\LaravelApiCode\App;
 
 class Config
 {

@@ -1,8 +1,8 @@
 <?php
-namespace Jefferyjob\LaravelLibApi;
+namespace Jefferyjob\LaravelApiCode;
 
 use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
-use Jefferyjob\LaravelLibApi\App\ApiCode;
+use Jefferyjob\LaravelApiCode\App\ApiCode;
 
 /**
  * --------------------------------------------------------------------------

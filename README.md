@@ -1,5 +1,10 @@
 # Laravel Library Api Code
 
+## 环境要求
+
+[![laravel](https://img.shields.io/badge/laravel-%3E8.x-red)](https://laravel.com)
+[![php](https://img.shields.io/badge/php-%3E8.1-blue)](https://www.php.net)
+
 ## 安装
 
 **composer 安装**
@@ -13,13 +18,13 @@ composer require jefferyjob/laravel-api-code
 在 laravel framework 配置目录 conf 目录的 app.php 文件种，容器配置 providers 种配置IOC
 
 ```php
-Jefferyjob\LaravelApiCode\Providers\LibApiPublishProvider::class
+Jefferyjob\LaravelApiCode\ApiCodeServiceProvider::class,
 ```
 
 **发布配置**
 
 ```bash
-php artisan vendor:publish --provider="Jefferyjob\LaravelLibApi\ApiCodeServiceProvider"
+php artisan vendor:publish --provider="Jefferyjob\LaravelApiCode\ApiCodeServiceProvider"
 ```
 
 ## API数据优化
@@ -39,7 +44,7 @@ php artisan vendor:publish --provider="Jefferyjob\LaravelLibApi\ApiCodeServicePr
 public function render($request, Throwable $e)
 {
     if ($request->is('ajax/*') || $request->is('api/*') || $request->ajax()){
-        return response()->json((new ApiContent())->getExceptionContent($request, $e), 200);
+        return response()->json(app('ApiCode')->getExceptionContent($request, $e), 200);
     } else {
         return parent::render($request, $e);
     }
