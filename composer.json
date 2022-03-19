@@ -20,7 +20,5 @@
             "Tests\\": "tests/"
         }
     },
-    "require-dev": {
-        "laravel/framework": "10.x-dev"
-    }
+    "require-dev": {}
 }
